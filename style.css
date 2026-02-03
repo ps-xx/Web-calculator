@@ -1,0 +1,418 @@
+/* ============================================
+   Professional Web Calculator - Styles
+   @author Pablo.ejs (@ps-xx)
+   @github https://github.com/ps-xx
+   ============================================ */
+
+/* ============================================
+   CSS Variables for Theme Support
+   ============================================ */
+:root {
+    /* Light Theme */
+    --bg-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --bg-secondary: rgba(255, 255, 255, 0.1);
+    --bg-tertiary: rgba(255, 255, 255, 0.05);
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.8);
+    --text-tertiary: rgba(255, 255, 255, 0.6);
+    --glass-bg: rgba(255, 255, 255, 0.15);
+    --glass-border: rgba(255, 255, 255, 0.2);
+    --shadow-light: rgba(0, 0, 0, 0.1);
+    --shadow-medium: rgba(0, 0, 0, 0.2);
+    --shadow-heavy: rgba(0, 0, 0, 0.3);
+    
+    /* Button Colors */
+    --btn-number: rgba(255, 255, 255, 0.2);
+    --btn-operator: rgba(255, 255, 255, 0.25);
+    --btn-clear: rgba(255, 99, 99, 0.3);
+    --btn-equals: rgba(99, 255, 162, 0.3);
+    --btn-hover: rgba(255, 255, 255, 0.3);
+    --btn-active: rgba(255, 255, 255, 0.4);
+}
+
+[data-theme="dark"] {
+    /* Dark Theme */
+    --bg-primary: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    --bg-secondary: rgba(0, 0, 0, 0.3);
+    --bg-tertiary: rgba(0, 0, 0, 0.2);
+    --text-primary: #e0e0e0;
+    --text-secondary: rgba(224, 224, 224, 0.8);
+    --text-tertiary: rgba(224, 224, 224, 0.6);
+    --glass-bg: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --shadow-light: rgba(0, 0, 0, 0.3);
+    --shadow-medium: rgba(0, 0, 0, 0.5);
+    --shadow-heavy: rgba(0, 0, 0, 0.7);
+    
+    /* Button Colors */
+    --btn-number: rgba(255, 255, 255, 0.1);
+    --btn-operator: rgba(255, 255, 255, 0.15);
+    --btn-clear: rgba(255, 99, 99, 0.2);
+    --btn-equals: rgba(99, 255, 162, 0.2);
+    --btn-hover: rgba(255, 255, 255, 0.2);
+    --btn-active: rgba(255, 255, 255, 0.3);
+}
+
+/* ============================================
+   Reset & Base Styles
+   ============================================ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    min-height: 100vh;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    transition: background 0.3s ease;
+}
+
+.container {
+    width: 100%;
+    max-width: 450px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* ============================================
+   Header Styles
+   ============================================ */
+.header {
+    text-align: center;
+    position: relative;
+}
+
+.title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 5px;
+    text-shadow: 0 2px 10px var(--shadow-medium);
+}
+
+.theme-toggle-wrapper {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.theme-toggle {
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px var(--shadow-light);
+}
+
+.theme-toggle:hover {
+    transform: scale(1.1);
+    background: var(--btn-hover);
+}
+
+.theme-toggle:active {
+    transform: scale(0.95);
+}
+
+.theme-icon {
+    font-size: 1.5rem;
+    transition: transform 0.3s ease;
+}
+
+.theme-toggle:hover .theme-icon {
+    transform: rotate(15deg);
+}
+
+/* ============================================
+   Calculator Wrapper (Glassmorphism)
+   ============================================ */
+.calculator-wrapper {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: 25px;
+    padding: 25px;
+    box-shadow: 0 8px 32px var(--shadow-medium);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* ============================================
+   Display Section
+   ============================================ */
+.display-section {
+    background: var(--bg-secondary);
+    border-radius: 15px;
+    padding: 20px;
+    min-height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+    box-shadow: inset 0 2px 10px var(--shadow-light);
+}
+
+.expression {
+    font-size: 0.9rem;
+    color: var(--text-tertiary);
+    min-height: 25px;
+    margin-bottom: 10px;
+    word-break: break-all;
+    text-align: right;
+    width: 100%;
+}
+
+.display {
+    width: 100%;
+    text-align: right;
+}
+
+.display-text {
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    word-break: break-all;
+    line-height: 1.2;
+}
+
+/* ============================================
+   History Section
+   ============================================ */
+.history-section {
+    background: var(--bg-tertiary);
+    border-radius: 15px;
+    padding: 15px;
+    max-height: 200px;
+    overflow-y: auto;
+    box-shadow: inset 0 2px 10px var(--shadow-light);
+}
+
+.history-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.history-header h3 {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    font-weight: 600;
+}
+
+.clear-history-btn {
+    background: var(--btn-clear);
+    border: none;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--text-primary);
+    font-size: 0.8rem;
+    transition: all 0.2s ease;
+}
+
+.clear-history-btn:hover {
+    transform: scale(1.1);
+    background: var(--btn-hover);
+}
+
+.history-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.history-item {
+    background: var(--glass-bg);
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    border: 1px solid var(--glass-border);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.history-item:hover {
+    background: var(--btn-hover);
+    transform: translateX(-3px);
+}
+
+.history-empty {
+    text-align: center;
+    color: var(--text-tertiary);
+    font-size: 0.85rem;
+    padding: 10px;
+}
+
+/* ============================================
+   Buttons Grid
+   ============================================ */
+.buttons-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+}
+
+.btn {
+    background: var(--btn-number);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    padding: 20px;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 15px var(--shadow-light);
+    user-select: none;
+    font-family: inherit;
+}
+
+.btn:hover {
+    background: var(--btn-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px var(--shadow-medium);
+}
+
+.btn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 8px var(--shadow-light);
+    background: var(--btn-active);
+}
+
+.btn-operator {
+    background: var(--btn-operator);
+}
+
+.btn-clear {
+    background: var(--btn-clear);
+}
+
+.btn-equals {
+    background: var(--btn-equals);
+    grid-column: span 1;
+}
+
+.btn-zero {
+    grid-column: span 1;
+}
+
+/* ============================================
+   Keyboard Hint
+   ============================================ */
+.keyboard-hint {
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--text-tertiary);
+    padding: 10px;
+}
+
+/* ============================================
+   Footer
+   ============================================ */
+.footer {
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--text-tertiary);
+    padding: 10px;
+}
+
+/* ============================================
+   Responsive Design
+   ============================================ */
+@media (max-width: 480px) {
+    .container {
+        max-width: 100%;
+        padding: 10px;
+    }
+
+    .calculator-wrapper {
+        padding: 20px;
+        border-radius: 20px;
+    }
+
+    .title {
+        font-size: 1.5rem;
+    }
+
+    .display-text {
+        font-size: 2rem;
+    }
+
+    .btn {
+        padding: 18px;
+        font-size: 1.2rem;
+    }
+
+    .buttons-grid {
+        gap: 10px;
+    }
+}
+
+@media (max-width: 360px) {
+    .display-text {
+        font-size: 1.8rem;
+    }
+
+    .btn {
+        padding: 15px;
+        font-size: 1.1rem;
+    }
+}
+
+/* ============================================
+   Scrollbar Styling
+   ============================================ */
+.history-section::-webkit-scrollbar {
+    width: 6px;
+}
+
+.history-section::-webkit-scrollbar-track {
+    background: var(--bg-tertiary);
+    border-radius: 10px;
+}
+
+.history-section::-webkit-scrollbar-thumb {
+    background: var(--glass-bg);
+    border-radius: 10px;
+}
+
+.history-section::-webkit-scrollbar-thumb:hover {
+    background: var(--btn-hover);
+}
+
+/* ============================================
+   Animation for Display Updates
+   ============================================ */
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.7;
+    }
+}
+
+.display-text.updated {
+    animation: pulse 0.3s ease;
+}

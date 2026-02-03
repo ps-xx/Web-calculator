@@ -2,7 +2,7 @@
 
 A modern, feature-rich web calculator built with pure HTML5, CSS3, and Vanilla JavaScript (ES6+). This project showcases professional frontend development practices with Object-Oriented Programming, modern UI/UX design, and advanced features.
 
-![Calculator Preview](https://via.placeholder.com/800x500/667eea/ffffff?text=Professional+Web+Calculator)
+![Calculator Preview](https://i.postimg.cc/T31MR4LY/Screenshot-2026-02-03-194940.png)
 
 ## ✨ Features
 
